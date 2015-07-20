@@ -1,0 +1,43 @@
+namenode:
+  image: badele/debian-hadoop
+  hostname: namenode
+  volumes:
+    - ./data:/root/source
+  ports:
+    - "8020:8020"
+    - "50070:50070"
+  command: hdfs namenode
+
+
+datanode1:
+  image: badele/debian-hadoop
+  hostname: datanode1
+  volumes:
+      - /docker_shared/debian-hadoop/datanode1:/shared
+  links:
+      - namenode
+  ports:
+      - "5001:50075"
+  command: hdfs datanode
+
+datanode2:
+  image: badele/debian-hadoop
+  hostname: datanode2
+  volumes:
+      - /docker_shared/debian-hadoop/datanode2:/shared
+  links:
+      - namenode
+  ports:
+      - "5002:50075"
+  command: hdfs datanode
+
+datanode3:
+  image: badele/debian-hadoop
+  hostname: datanode3
+  volumes:
+      - /docker_shared/debian-hadoop/datanode3:/shared
+  links:
+      - namenode
+  ports:
+      - "5003:50075"
+  command: hdfs datanode
