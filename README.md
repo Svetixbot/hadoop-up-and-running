@@ -47,4 +47,8 @@ sample: http://192.168.59.103:50070
 
 ```
 
+#### Access hadoop fs:
+```sh
+hadoop fs -ls hdfs://{boot2docker ip-addess}/
 
+```
